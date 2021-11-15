@@ -5,7 +5,7 @@ import Header from '../src/components/Header'
 import { Page1, Page2, Page3 } from '../src/components/Content'
 import { theme } from './components/Assets'
 
-const MESSAGE = 'Top announcement bar cold contain a message 🎉'
+const MESSAGE = 'We are soon going live 🎉'
 
 const TopBarText = styled.span`
   color: ${theme.colors.title};

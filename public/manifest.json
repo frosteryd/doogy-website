@@ -1,6 +1,6 @@
 {
-  "short_name": "DOOGO",
-  "name": "DOOGO - The app for your dog",
+  "short_name": "DOOGY",
+  "name": "DOOGY - The app for your dog",
   "icons":[
     {"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},
     {"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}
