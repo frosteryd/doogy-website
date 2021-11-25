@@ -156,7 +156,7 @@ export const Page2 = () => {
   const privatperson = [
     { title: 'Följ hur dina hund utvecklas', body: 'Genom att dokumentera hundens vardag får du överblick över aktiviteter och detaljer kring hunds hälsa och utveckling.', icon: faPaw, img: AppPhoto },
     { title: 'Kommunicera med andra​', body: 'Få möjlighet att få rådgivning från ett stort community med personer med liknande erfarenhet', icon: faComments, img: AppPhoto },
-    { title: 'Kom ihåg det viktigaste​', body: 'Lägg in påminnelser inför vaccinationer, avmaskningar, veterinärbesök, skoningar och mycket annat, direkt i appen.', icon: faLifeRing, img: AppPhoto },
+    { title: 'Kom ihåg det viktigaste​', body: 'Lägg in påminnelser inför vaccinationer, avmaskningar, veterinärbesök och mycket annat, direkt i appen.', icon: faLifeRing, img: AppPhoto },
     { title: 'Var förberedd om något händer​', body: 'Vid olycka, skada eller sjukdom kan du snabbt skicka in rätt underlag till veterinär vilket minskar risken för missförstånd.', icon: faCalendarCheck, img: AppPhoto }
   ]
 
