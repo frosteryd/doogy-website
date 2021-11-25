@@ -181,8 +181,8 @@ export const Page2 = () => {
       </ButtonWrap> */}
       <HowWrap>
         <Column>
-          <Card selected={selectedCard === 0} onSelect={() => setselectedCard(0)} icon={<FontAwesomeIcon icon={text[0].icon} />} title={text[0].title} body={text[0].body} />
-          <Card selected={selectedCard === 1} onSelect={() => setselectedCard(1)} icon={<FontAwesomeIcon icon={text[1].icon} />} title={text[1].title} body={text[1].body} />
+          <Card selected={selectedCard === 0} onSelect={() => setselectedCard(0)} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[0].icon} />} title={text[0].title} body={text[0].body} />
+          <Card selected={selectedCard === 1} onSelect={() => setselectedCard(1)} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[1].icon} />} title={text[1].title} body={text[1].body} />
         </Column>
         <Column>
           <PhoneWrap2>
@@ -190,8 +190,8 @@ export const Page2 = () => {
           </PhoneWrap2>
         </Column>
         <Column>
-          <Card selected={selectedCard === 2} onSelect={() => setselectedCard(2)} icon={<FontAwesomeIcon icon={text[2].icon} />} title={text[2].title} body={text[2].body} />
-          <Card selected={selectedCard === 3} onSelect={() => setselectedCard(3)} icon={<FontAwesomeIcon icon={text[3].icon} />} title={text[3].title} body={text[3].body} />
+          <Card selected={selectedCard === 2} onSelect={() => setselectedCard(2)} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[2].icon} />} title={text[2].title} body={text[2].body} />
+          <Card selected={selectedCard === 3} onSelect={() => setselectedCard(3)} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[3].icon} />} title={text[3].title} body={text[3].body} />
         </Column>
 
       </HowWrap>
