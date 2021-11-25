@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { Stars, DrawArrow, Appstore, device, Button, Phone, Card, TypeWrite, ArrowWrap, theme } from '../components/Assets'
 import { Clock } from 'grommet-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaw, faComments, faLifeRing, faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import DogoHappy from '../assets/dogHappy.gif'
 import DogoChatting from '../assets/dogChatting.png'
@@ -81,7 +83,7 @@ export const Page1 = () => {
     <Wrap>
       <WrapWidth>
         <Title>
-          Framtidens <TypeWrite words={['hundapp', 'hundaffär', 'hundvakt']} />
+          <TypeWrite words={['Serviceboken', 'Hundvakten', 'Valpgrupper', 'Community', 'Events']} /> för din bästa vän
         </Title>
         <Space />
         <Stars />
@@ -152,34 +154,35 @@ export const Page2 = () => {
   const [selectedCard, setselectedCard] = useState(0)
 
   const privatperson = [
-    { title: 'hello', body: 'You can easily pay in the app after getting help.', img: AppPhoto },
-    { title: 'hello', body: 'You can easily pay in the app after getting help.', img: AppPhoto },
-    { title: 'hello', body: 'You can easily pay in the app after getting help.', img: AppPhoto },
-    { title: 'hello', body: 'You can easily pay in the app after getting help.', img: AppPhoto }
+    { title: 'Följ hur dina hund utvecklas', body: 'Genom att dokumentera hundens vardag får du överblick över aktiviteter och detaljer kring hunds hälsa och utveckling.', icon: faPaw, img: AppPhoto },
+    { title: 'Kommunicera med andra​', body: 'Få möjlighet att få rådgivning från ett stort community med personer med liknande erfarenhet', icon: faComments, img: AppPhoto },
+    { title: 'Kom ihåg det viktigaste​', body: 'Lägg in påminnelser inför vaccinationer, avmaskningar, veterinärbesök, skoningar och mycket annat, direkt i appen.', icon: faLifeRing, img: AppPhoto },
+    { title: 'Var förberedd om något händer​', body: 'Vid olycka, skada eller sjukdom kan du snabbt skicka in rätt underlag till veterinär vilket minskar risken för missförstånd.', icon: faCalendarCheck, img: AppPhoto }
   ]
 
-  const foretag = [
-    { title: 'hello företag', body: 'You can easily pay in the app after getting help.', img: AppPhoto },
-    { title: 'hello företag', body: 'You can easily pay in the app after getting help.', img: AppPhoto },
-    { title: 'hello företag', body: 'You can easily pay in the app after getting help.', img: AppPhoto },
-    { title: 'hello företag', body: 'You can easily pay in the app after getting help.', img: AppPhoto }
-  ]
+  // const foretag = [
+  //   { title: 'hello företag', body: 'You can easily pay in the app after getting help.', icon: faPaw, img: AppPhoto },
+  //   { title: 'hello företag', body: 'You can easily pay in the app after getting help.', icon: faPaw, img: AppPhoto },
+  //   { title: 'hello företag', body: 'You can easily pay in the app after getting help.', icon: faPaw, img: AppPhoto },
+  //   { title: 'hello företag', body: 'You can easily pay in the app after getting help.', icon: faPaw, img: AppPhoto }
+  // ]
 
-  const text = (selectedButton === 0 ? privatperson : foretag)
+  // const text = (selectedButton === 0 ? privatperson : foretag)
+  const text = (selectedButton === 0 && privatperson)
 
   return (
     <Wrap2>
       <Title2 width='500px'>
         Hur Doogo fungerar
       </Title2>
-      <ButtonWrap>
+      {/* <ButtonWrap>
         <Button selected={selectedButton === 0} onSelect={() => setSelectedButton(0)}><ButtonText>Privatperson</ButtonText></Button>
         <Button selected={selectedButton === 1} onSelect={() => setSelectedButton(1)}><ButtonText>Företag</ButtonText></Button>
-      </ButtonWrap>
+      </ButtonWrap> */}
       <HowWrap>
         <Column>
-          <Card selected={selectedCard === 0} onSelect={() => setselectedCard(0)} icon={<Clock />} title={text[0].title} body={text[0].body} />
-          <Card selected={selectedCard === 1} onSelect={() => setselectedCard(1)} icon={<Clock />} title={text[1].title} body={text[1].body} />
+          <Card selected={selectedCard === 0} onSelect={() => setselectedCard(0)} icon={<FontAwesomeIcon icon={text[0].icon} />} title={text[0].title} body={text[0].body} />
+          <Card selected={selectedCard === 1} onSelect={() => setselectedCard(1)} icon={<FontAwesomeIcon icon={text[1].icon} />} title={text[1].title} body={text[1].body} />
         </Column>
         <Column>
           <PhoneWrap2>
@@ -187,8 +190,8 @@ export const Page2 = () => {
           </PhoneWrap2>
         </Column>
         <Column>
-          <Card selected={selectedCard === 2} onSelect={() => setselectedCard(2)} icon={<Clock />} title={text[2].title} body={text[2].body} />
-          <Card selected={selectedCard === 3} onSelect={() => setselectedCard(3)} icon={<Clock />} title={text[3].title} body={text[3].body} />
+          <Card selected={selectedCard === 2} onSelect={() => setselectedCard(2)} icon={<FontAwesomeIcon icon={text[2].icon} />} title={text[2].title} body={text[2].body} />
+          <Card selected={selectedCard === 3} onSelect={() => setselectedCard(3)} icon={<FontAwesomeIcon icon={text[3].icon} />} title={text[3].title} body={text[3].body} />
         </Column>
 
       </HowWrap>
@@ -248,7 +251,7 @@ export const Page3 = () => {
           En app för hundälskare
         </Title2>
         <Body>
-          Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+          Serviceboken för din hund som hjälper dig att utvecklas och ta hand om din bästa vän under hela dess liv.
         </Body>
       </TextWrap3>
       <ImgWrap>

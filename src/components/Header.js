@@ -30,22 +30,46 @@ const Right = styled.div`
     }
 `
 const Contact = styled.div`
+  cursor: pointer;
+  animation: wiggle 5s ease infinite;
+  @keyframes wiggle {
+      0% {transform: rotateZ(2deg);}
+      2% {transform: rotateZ(-2deg);}
+      4% {transform: rotateZ(2deg);}
+      6% {transform: rotateZ(2deg);}
+      8% {transform: rotateZ(-2deg);}
+      10% {transform: rotateZ(2deg);}
+      12% {transform: rotateZ(0deg);}
+  }
 `
 const Center = styled.div`
 `
 
-const HeaderComponent = ({ alert }) => (
-  <Header>
-    <Center>
-      <Logo src={Icon} />
-    </Center>
-    <Right alert={alert}>
-      <Contact>
-        <ContactButton />
-      </Contact>
-    </Right>
-  </Header>
+const HeaderComponent = ({ alert }) => {
+  const onClick = () => {
+    console.log('scroll')
+    window.scrollTo({
+      top: document.body.clientHeight,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }
 
-)
+  console.log(document.scrollingElement)
+  console.log()
+
+  return (
+    <Header>
+      <Center>
+        <Logo src={Icon} />
+      </Center>
+      <Right alert={alert}>
+        <Contact onClick={() => onClick()}>
+          <ContactButton />
+        </Contact>
+      </Right>
+    </Header>
+  )
+}
 
 export default HeaderComponent

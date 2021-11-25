@@ -5,9 +5,11 @@ import { Appstore, device, theme } from './Assets'
 
 const data = [
   { title: 'Kontakt', subTitles: [{ title: 'info@doogy.se', link: 'mailto:info@doogy.se' }, { title: '+46 70-999 99 99', link: 'tel:+46709999999' }] },
-  { title: 'Avtal', subTitles: [{ title: 'Allmänna villkor', link: 'https://www.notion.com' }, { title: 'Biträdesavtal (GDPR)', link: 'notion.com' }] },
-  { title: 'Länkar', subTitles: [{ title: 'Blogg', link: 'notion.com' }, { title: 'Uppdateringare', link: 'notion.com' }, { title: 'Jobba hos oss', link: 'notion.com' }] }
+  { title: 'Avtal', subTitles: [{ title: 'Allmänna villkor', link: 'https://shadow-freon-721.notion.site/Villkor-f-r-Doogy-app-908e9dc94fc4451bb1a75a62cb712ce9' }, { title: 'Biträdesavtal (GDPR)', link: 'https://shadow-freon-721.notion.site/Villkor-f-r-Doogy-app-908e9dc94fc4451bb1a75a62cb712ce9' }] },
+  { title: 'Länkar', subTitles: [{ title: 'Blogg', link: 'https://shadow-freon-721.notion.site/Blogg-18d41237d2d04b138b2bbdb2a3d500a9' }, { title: 'Uppdateringare', link: 'https://shadow-freon-721.notion.site/Uppdateringar-8a0507368ca148178b072df5d79608f8' }] }
 ]
+
+// { title: 'Länkar', subTitles: [{ title: 'Blogg', link: 'notion.com' }, { title: 'Uppdateringare', link: 'notion.com' }, { title: 'Jobba hos oss', link: 'notion.com' }] }
 
 const Footer = styled.footer`
   width: 100%;

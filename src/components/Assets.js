@@ -275,8 +275,9 @@ export const Button = ({ onSelect, selected, children }) => {
 }
 
 const CardWrap = styled.div`
-  padding: 1rem;
+  padding: 2rem;
   margin: 0.75em;
+  max-width: 300px;
   border: ${props => props.selected ? `2px solid ${theme.colors.primary}` : `2px solid ${theme.colors.background}`};
   border-radius: 2em;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
