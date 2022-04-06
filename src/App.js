@@ -13,7 +13,7 @@ const TopBarText = styled.span`
 `
 
 const GrommetWrap = styled(Grommet)`
-  background: ${theme.colors.background};
+  background-image: ${theme.colors.background};
   min-height: 100vh;
 `
 

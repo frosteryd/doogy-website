@@ -9,6 +9,7 @@ import ArrowDrawStraight from '../assets/arrowStraight.svg'
 import PhoneImg from '../assets/phone.svg'
 import AppImg from '../assets/phoneapp.png'
 import Typewriter from 'typewriter-effect'
+import { SwitchTransition, CSSTransition } from 'react-transition-group'
 
 import styled from 'styled-components'
 
@@ -33,6 +34,17 @@ export const device = {
   desktopL: `(max-width: ${size.desktop})`
 }
 
+export const deviceMin = {
+  mobileS: `(min-width: ${size.mobileS})`,
+  mobileM: `(min-width: ${size.mobileM})`,
+  mobileL: `(min-width: ${size.mobileL})`,
+  tablet: `(min-width: ${size.tablet})`,
+  laptop: `(min-width: ${size.laptop})`,
+  laptopL: `(min-width: ${size.laptopL})`,
+  desktop: `(min-width: ${size.desktop})`,
+  desktopL: `(min-width: ${size.desktop})`
+}
+
 export const theme = {
   global: {
     font: {
@@ -45,14 +57,14 @@ export const theme = {
     }
   },
   colors: {
-    background: '#FFFAFE',
+    background: 'linear-gradient(#FFFAFE, #E0E2FC, #AEBBF8)',
     yellow: '#FFCA50',
     orange: '#FF9600',
     beige: '#AEBBF8',
     dark: '#444444',
     linear: '#C5CCF4',
     linearBG: '#C5CCF4',
-    title: '#C7312E',
+    title: '#8C3993',
     primary: '#AEBBF8'
   }
 }
@@ -342,7 +354,6 @@ const PhoneWrap = styled.div`
 `
 
 const PhoneSvg = styled(ReactSVG)`
-
   & svg {
     max-width: 100%;
     height: 100%;
