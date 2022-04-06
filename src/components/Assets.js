@@ -9,8 +9,7 @@ import ArrowDrawStraight from '../assets/arrowStraight.svg'
 import PhoneImg from '../assets/phone.svg'
 import AppImg from '../assets/phoneapp.png'
 import Typewriter from 'typewriter-effect'
-import { SwitchTransition, CSSTransition } from 'react-transition-group'
-
+import CrossfadeImage from 'react-crossfade-image'
 import styled from 'styled-components'
 
 const size = {
@@ -357,6 +356,7 @@ const PhoneSvg = styled(ReactSVG)`
   & svg {
     max-width: 100%;
     height: 100%;
+    z-index: 9999;
   }
   @media ${device.laptopL}{
     max-width: 275px;
@@ -374,7 +374,7 @@ const Background = styled.div`
 `
 
 const BackgroundImage = styled.img`
-  border-radius: 40px;
+
 `
 
 export const Phone = ({ size, img }) => {
@@ -382,7 +382,8 @@ export const Phone = ({ size, img }) => {
     <PhoneWrap size={size}>
       <PhoneSvg className='image' src={PhoneImg} />
       <Background>
-        <BackgroundImage className='image' src={img} />
+        <CrossfadeImage style={{ borderRadius: '40px' }} src={img} />
+
       </Background>
     </PhoneWrap>
   )

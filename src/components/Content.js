@@ -63,7 +63,7 @@ const Title2 = styled.h2`
 `
 
 const Title3 = styled.h2`
-  font-size: 40px;
+  font-size: 45px;
   line-height: 100%;
   font-weight: 600;
   margin: 0 auto;
@@ -237,7 +237,7 @@ export const Page2 = () => {
 
   const privatperson = [
     { id: 1, title: 'Utvecklas', body: 'Genom att dokumentera hundens vardag får du överblick över aktiviteter och detaljer kring hunds hälsa och utveckling.', icon: faPaw, img: Develop },
-    { id: 2, title: 'Kommunicera', body: 'Få möjlighet att få rådgivning från ett stort community med personer med liknande erfarenhet', icon: faComments, img: Communicate },
+    { id: 2, title: 'Umgås', body: 'Få möjlighet att få rådgivning från ett stort community med personer med liknande erfarenhet', icon: faComments, img: Communicate },
     { id: 3, title: 'Kom ihåg​', body: 'Lägg in påminnelser inför vaccinationer, avmaskningar, veterinärbesök och mycket annat, direkt i appen.', icon: faLifeRing, img: Reminder },
     { id: 4, title: 'Förberedd​', body: 'Vid olycka, skada eller sjukdom kan du snabbt skicka in rätt underlag till veterinär vilket minskar risken för missförstånd.', icon: faCalendarCheck, img: Prepare }
   ]
@@ -254,9 +254,6 @@ export const Page2 = () => {
 
   return (
     <Wrap2>
-      <Title2 width='600px'>
-        Så funkar det
-      </Title2>
       <Spacer />
       {/* <ButtonWrap>
         <Button selected={selectedButton === 0} onSelect={() => setSelectedButton(0)}><ButtonText>Privatperson</ButtonText></Button>
@@ -333,7 +330,7 @@ export const Page3 = () => {
           En app för hundälskare
         </Title2>
         <Body>
-          Serviceboken för din hund som hjälper dig att utvecklas och ta hand om din bästa vän under hela dess liv.
+          Doogy fungerar som serviceboken för din hund. Vi hjälper dig att utvecklas och ta hand om din bästa vän under hela ert liv tillsammans.
         </Body>
       </TextWrap3>
       <ImgWrap>
