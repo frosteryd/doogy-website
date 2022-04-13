@@ -236,10 +236,10 @@ export const Page2 = () => {
   const [selectedCard, setselectedCard] = useState(undefined)
 
   const privatperson = [
-    { id: 1, title: 'Utvecklas', body: 'Genom att dokumentera hundens vardag får du överblick över aktiviteter och detaljer kring hunds hälsa och utveckling.', icon: faPaw, img: Develop },
-    { id: 2, title: 'Umgås', body: 'Få möjlighet att få rådgivning från ett stort community med personer med liknande erfarenhet', icon: faComments, img: Communicate },
-    { id: 3, title: 'Kom ihåg​', body: 'Lägg in påminnelser inför vaccinationer, avmaskningar, veterinärbesök och mycket annat, direkt i appen.', icon: faLifeRing, img: Reminder },
-    { id: 4, title: 'Förberedd​', body: 'Vid olycka, skada eller sjukdom kan du snabbt skicka in rätt underlag till veterinär vilket minskar risken för missförstånd.', icon: faCalendarCheck, img: Prepare }
+    { id: 1, title: 'Utvecklas', body: 'Doogy hjälper dig att dokumentera händelser i hundens vardag så du överblick över aktiviteter, större möjlighet att följa upp förändringar och detaljer kring hundens hälsa och utveckling.', icon: faPaw, img: Develop },
+    { id: 2, title: 'Umgås', body: 'Vårt community hjälper dig med att svara på frågor och du kan enkelt få rådgivning av personer med liknande erfarenhet, bidra med din kompetens eller bara diskutera allt som har med din bästa vän att göra.', icon: faComments, img: Communicate },
+    { id: 3, title: 'Kom ihåg​', body: 'Missa inget viktigt, Doogy kan hjälpa dig att lägga in påminnelser inför vaccinationer, avmaskningar, veterinärbesök eller andra viktiga händelser.', icon: faLifeRing, img: Reminder },
+    { id: 4, title: 'Förberedd​', body: 'Om det värsta skulle hända och din bästa vän skulle råka ut för en olycka, skada eller sjukdom kan du snabbt dela rätt underlag med veterinär och försäkringsbolag. Du blir förberedd när det betyder som mest.', icon: faCalendarCheck, img: Prepare }
   ]
 
   // const foretag = [
