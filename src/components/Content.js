@@ -233,7 +233,7 @@ const Card = (params) => {
 
 export const Page2 = () => {
   const [selectedButton, setSelectedButton] = useState(0)
-  const [selectedCard, setselectedCard] = useState(undefined)
+  const [selectedCard, setselectedCard] = useState(0)
 
   const privatperson = [
     { id: 1, title: 'Utvecklas', body: 'Doogy hjälper dig att dokumentera händelser i hundens vardag så du överblick över aktiviteter, större möjlighet att följa upp förändringar och detaljer kring hundens hälsa och utveckling.', icon: faPaw, img: Develop },
