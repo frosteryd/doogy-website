@@ -1,9 +1,9 @@
+import { useState, useCallback, useLayoutEffect } from 'react'
 import styled from 'styled-components'
-import { Stars, DrawArrow, Appstore, device, deviceMin, Button, Phone, TypeWrite, ArrowWrap, theme } from '../components/Assets'
-import { Clock } from 'grommet-icons'
+import { Stars, DrawArrow, Appstore, device, deviceMin, Phone, TypeWrite, ArrowWrap } from '../components/Assets'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw, faComments, faLifeRing, faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import Sticky from 'react-stickynode'
 import DogoHappy from '../assets/dogHappy.gif'
 import DogoChatting from '../assets/dogChatting.png'
 import AppPhoto from '../assets/phoneapp.png'
@@ -25,7 +25,11 @@ const Body = styled.p`
 const Text = styled.p`
   font-size: 16px;
   line-height: 125%;
-  transition: "all .5s ease",
+  transition: "all .5s ease";
+  text-align: left;
+  @media ${device.mobileM}{
+    font-size: 15px;
+  }
 `
 
 const WrapWidth = styled.div`
@@ -46,6 +50,7 @@ const Title = styled.h1`
   @media ${device.tablet}{
     font-size: 38px;
   }
+
 `
 
 const Title2 = styled.h2`
@@ -74,6 +79,9 @@ const Title3 = styled.h2`
   }
   @media ${device.tablet}{
     font-size: 30px;
+  }
+  @media ${device.mobileL}{
+    font-size: 26px;
   }
 `
 
@@ -137,16 +145,16 @@ export const Page1 = () => {
       <PhoneWrap1>
         <DogoChat src={DogoChatting} />
       </PhoneWrap1> */}
+      <div style={{ paddingBottom: '1em' }} />
     </Wrap>
   )
 }
 
 const Wrap2 = styled.div`
-  width: 100%;
-  max-width: 1200px;
+  height: 2500px;
+  width: 90%;
   margin: 0 auto;
-  margin-top: 5em;
-
+  align-items: flex-start;
 `
 
 const ButtonWrap = styled.div`
@@ -161,8 +169,10 @@ const ButtonText = styled.div`
 const HowWrap = styled.div`
   display: flex;
   margin: 1em;
+  max-width: 100%;
   @media ${device.tablet}{
     flex-direction: column;
+    margin: 0;
   }
 `
 
@@ -211,6 +221,23 @@ const CardHeader = styled.div`
   text-align: start;
 `
 
+const Desktop = styled.div`
+   @media ${device.tablet}{
+    display: none;
+  }
+`
+
+const Mobile = styled.div`
+   @media ${deviceMin.tablet}{
+    display: none;
+  }
+`
+
+const SpacerLarge = styled.div`
+  margin-top: 5em;
+  margin-bottom: 5em;
+`
+
 const Card = (params) => {
   const { selected, selectedCard, setselectedCard, onSelect, id, title, body } = params
   const active = (selectedCard === undefined || selected)
@@ -219,8 +246,8 @@ const Card = (params) => {
     <CardWrap
       active={active}
       onClick={onSelect}
-      onMouseEnter={onSelect}
-      onMouseLeave={() => setselectedCard(undefined)}
+      // onMouseEnter={onSelect}
+      // onMouseLeave={() => setselectedCard(undefined)}
     >
       <CardHeader>
         <Title3 active={active}>{`0${id} - ${title}`}</Title3>
@@ -234,6 +261,29 @@ const Card = (params) => {
 export const Page2 = () => {
   const [selectedButton, setSelectedButton] = useState(0)
   const [selectedCard, setselectedCard] = useState(0)
+  const [dimensions, setDimensions] = useState(null)
+
+  const callBackRef = useCallback(domNode => {
+    if (domNode) {
+      const dimensions = domNode.getBoundingClientRect()
+      const top = dimensions.top + window.scrollY
+      const bottom = dimensions.bottom + window.scrollY
+      const height = dimensions.height
+      setDimensions({ top, bottom, height })
+    }
+  }, [])
+
+  const onScroll = () => {
+    if (dimensions) {
+      const sectionSize = (dimensions.height / 4)
+      const scrollPosition = window.scrollY + window.innerHeight - sectionSize
+      if (dimensions.top < scrollPosition && scrollPosition < dimensions.bottom) {
+        const diff = scrollPosition - dimensions.top
+        const section = Math.floor(diff / sectionSize)
+        setselectedCard(section)
+      }
+    }
+  }
 
   const privatperson = [
     { id: 1, title: 'Utvecklas', body: 'Doogy hjälper dig att dokumentera händelser i hundens vardag så du överblick över aktiviteter, större möjlighet att följa upp förändringar och detaljer kring hundens hälsa och utveckling.', icon: faPaw, img: Develop },
@@ -252,34 +302,57 @@ export const Page2 = () => {
   // const text = (selectedButton === 0 ? privatperson : foretag)
   const text = (selectedButton === 0 && privatperson)
 
+  useLayoutEffect(() => {
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [dimensions])
+
   return (
-    <Wrap2>
-      <Spacer />
-      {/* <ButtonWrap>
+    <SpacerLarge>
+      <Wrap2 ref={callBackRef}>
+        {/* <ButtonWrap>
         <Button selected={selectedButton === 0} onSelect={() => setSelectedButton(0)}><ButtonText>Privatperson</ButtonText></Button>
         <Button selected={selectedButton === 1} onSelect={() => setSelectedButton(1)}><ButtonText>Företag</ButtonText></Button>
       </ButtonWrap> */}
-      <HowWrap>
-        <Column>
-          <Card id={text[0].id} selectedCard={selectedCard} selected={selectedCard === 0} setselectedCard={setselectedCard} onSelect={() => setselectedCard(0)} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[0].icon} />} title={text[0].title} body={text[0].body} />
-          <Card id={text[1].id} selectedCard={selectedCard} selected={selectedCard === 1} setselectedCard={setselectedCard} onSelect={() => setselectedCard(1)} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[1].icon} />} title={text[1].title} body={text[1].body} />
-        </Column>
-        <Column style={{ margin: '1em' }}>
-          <PhoneWrap2>
-            <Phone img={selectedCard !== undefined ? text[selectedCard].img : Base} />
-          </PhoneWrap2>
-        </Column>
-        <Column>
-          <Card id={text[2].id} selectedCard={selectedCard} selected={selectedCard === 2} setselectedCard={setselectedCard} onSelect={() => setselectedCard(2)} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[2].icon} />} title={text[2].title} body={text[2].body} />
-          <Card id={text[3].id} selectedCard={selectedCard} selected={selectedCard === 3} setselectedCard={setselectedCard} onSelect={() => setselectedCard(3)} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[3].icon} />} title={text[3].title} body={text[3].body} />
-        </Column>
-        <PhoneWrap3>
-          <Phone img={selectedCard !== undefined ? text[selectedCard].img : Base} />
-        </PhoneWrap3>
-      </HowWrap>
-      <Spacer />
-      <Spacer />
-    </Wrap2>
+        <Desktop>
+          <Sticky style={{ width: '100%' }} enabled top={50} bottomBoundary={3800}>
+            <HowWrap>
+              <Column>
+                <Card id={text[0].id} selectedCard={selectedCard} selected={selectedCard === 0} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[0].icon} />} title={text[0].title} body={text[0].body} />
+                <Card id={text[1].id} selectedCard={selectedCard} selected={selectedCard === 1} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[1].icon} />} title={text[1].title} body={text[1].body} />
+              </Column>
+              <Column style={{ margin: '1em' }}>
+                <PhoneWrap2>
+                  <Phone img={selectedCard !== undefined ? text[selectedCard].img : Base} />
+                </PhoneWrap2>
+                <PhoneWrap3>
+                  <Phone img={selectedCard !== undefined ? text[selectedCard].img : Base} />
+                </PhoneWrap3>
+              </Column>
+              <Column>
+                <Card id={text[2].id} selectedCard={selectedCard} selected={selectedCard === 2} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[2].icon} />} title={text[2].title} body={text[2].body} />
+                <Card id={text[3].id} selectedCard={selectedCard} selected={selectedCard === 3} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[3].icon} />} title={text[3].title} body={text[3].body} />
+              </Column>
+            </HowWrap>
+          </Sticky>
+        </Desktop>
+        <Mobile>
+          <Sticky style={{ width: '100%' }} enabled top={50} bottomBoundary={3600}>
+            <HowWrap style={{ paddingTop: '1.5em' }}>
+              <Column>
+                {selectedCard === 0 && <Card id={text[0].id} selectedCard={selectedCard} selected={selectedCard === 0} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[0].icon} />} title={text[0].title} body={text[0].body} />}
+                {selectedCard === 1 && <Card id={text[1].id} selectedCard={selectedCard} selected={selectedCard === 1} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[1].icon} />} title={text[1].title} body={text[1].body} />}
+                {selectedCard === 2 && <Card id={text[2].id} selectedCard={selectedCard} selected={selectedCard === 2} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[2].icon} />} title={text[2].title} body={text[2].body} />}
+                {selectedCard === 3 && <Card id={text[3].id} selectedCard={selectedCard} selected={selectedCard === 3} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[3].icon} />} title={text[3].title} body={text[3].body} />}
+              </Column>
+              <PhoneWrap3>
+                <Phone img={selectedCard !== undefined ? text[selectedCard].img : Base} />
+              </PhoneWrap3>
+            </HowWrap>
+          </Sticky>
+        </Mobile>
+      </Wrap2>
+    </SpacerLarge>
   )
 }
 

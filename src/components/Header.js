@@ -28,6 +28,9 @@ const Right = styled.div`
   @media ${device.tablet} {
       right: 10px;
     }
+  @media ${device.mobileL} {
+    top: 40px;
+  }
 `
 const Contact = styled.div`
   cursor: pointer;

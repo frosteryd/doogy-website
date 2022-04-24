@@ -23,10 +23,10 @@ const SizeWrap = styled.div`
 `
 
 const Page = styled.div`
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   text-align: center;
+  overflow: hidden;
 `
 
 function App () {
@@ -58,7 +58,6 @@ function App () {
         </Page>
         <Page>
           <Page2 />
-
         </Page>
         <Page3 />
       </Main>

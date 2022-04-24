@@ -11,6 +11,7 @@ import AppImg from '../assets/phoneapp.png'
 import Typewriter from 'typewriter-effect'
 import CrossfadeImage from 'react-crossfade-image'
 import styled from 'styled-components'
+import worksText from '../assets/worksText.png'
 
 const size = {
   mobileS: '320px',
@@ -100,6 +101,7 @@ export const Appstore = ({ marginTop = '0px', size }) => {
 
 const ContactWrap = styled.div`
   min-width: 140px;
+  box-shadow: 0px 2px 35px 5px rgba(0, 0, 0, 0.15);
   background: ${theme.colors.beige};
   border-radius: 40px;
   display: flex;
@@ -330,6 +332,12 @@ const PhoneWrap = styled.div`
   display: inline-block; /* <= shrinks container to image size */
   transition: transform 150ms ease-in-out;
   max-width: ${props => props.size || '300px'};
+  @media ${device.tablet} {
+    max-width: ${props => props.size || '240px'};
+  }
+  @media ${device.mobileM} {
+    max-width: ${props => props.size || '200px'};
+  }
   & img { /* <= optional, for responsiveness */
    display: block;
    max-width: 100%;
@@ -374,7 +382,7 @@ const Background = styled.div`
 `
 
 const BackgroundImage = styled.img`
-
+ width: 100%;
 `
 
 export const Phone = ({ size, img }) => {
@@ -382,7 +390,9 @@ export const Phone = ({ size, img }) => {
     <PhoneWrap size={size}>
       <PhoneSvg className='image' src={PhoneImg} />
       <Background>
-        <CrossfadeImage style={{ borderRadius: '40px' }} src={img} />
+        {img
+          ? <BackgroundImage style={{ borderRadius: '40px' }} src={img} />
+          : <BackgroundImage style={{ borderRadius: '40px' }} src={worksText} />}
 
       </Background>
     </PhoneWrap>
