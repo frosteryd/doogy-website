@@ -168,7 +168,6 @@ const ButtonText = styled.div`
 
 const HowWrap = styled.div`
   display: flex;
-  margin: 1em;
   max-width: 100%;
   @media ${device.tablet}{
     flex-direction: column;
@@ -276,7 +275,7 @@ export const Page2 = () => {
   const onScroll = () => {
     if (dimensions) {
       const sectionSize = (dimensions.height / 4)
-      const scrollPosition = window.scrollY + window.innerHeight - sectionSize
+      const scrollPosition = window.scrollY - sectionSize
       if (dimensions.top < scrollPosition && scrollPosition < dimensions.bottom) {
         const diff = scrollPosition - dimensions.top
         const section = Math.floor(diff / sectionSize)
@@ -315,7 +314,7 @@ export const Page2 = () => {
         <Button selected={selectedButton === 1} onSelect={() => setSelectedButton(1)}><ButtonText>Företag</ButtonText></Button>
       </ButtonWrap> */}
         <Desktop>
-          <Sticky style={{ width: '100%' }} enabled top={50} bottomBoundary={3800}>
+          <Sticky style={{ width: '100%' }} enabled top={0} bottomBoundary={3800}>
             <HowWrap>
               <Column>
                 <Card id={text[0].id} selectedCard={selectedCard} selected={selectedCard === 0} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[0].icon} />} title={text[0].title} body={text[0].body} />
