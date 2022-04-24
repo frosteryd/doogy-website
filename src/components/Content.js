@@ -336,7 +336,7 @@ export const Page2 = () => {
           </Sticky>
         </Desktop>
         <Mobile>
-          <Sticky style={{ width: '100%' }} enabled top={50} bottomBoundary={3600}>
+          <Sticky style={{ width: '100%' }} enabled top={50} bottomBoundary={3700}>
             <HowWrap style={{ paddingTop: '1.5em' }}>
               <Column>
                 {selectedCard === 0 && <Card id={text[0].id} selectedCard={selectedCard} selected={selectedCard === 0} icon={<FontAwesomeIcon style={{ fontSize: '2em' }} icon={text[0].icon} />} title={text[0].title} body={text[0].body} />}
