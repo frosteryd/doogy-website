@@ -12,9 +12,17 @@ import Communicate from '../assets/communicate.png'
 import Reminder from '../assets/reminder.png'
 import Prepare from '../assets/prepare.png'
 import Base from '../assets/worksText.png'
+import Success from '../assets/successOne.gif'
+import ErrorImg from '../assets/error.gif'
 
 const Wrap = styled.div`
   max-width: 100%;
+`
+
+const Center = styled.div`
+  justify-content: center;
+  align-items: 'center';
+  text-align: 'center';
 `
 
 const Body = styled.p`
@@ -50,7 +58,6 @@ const Title = styled.h1`
   @media ${device.tablet}{
     font-size: 38px;
   }
-
 `
 
 const Title2 = styled.h2`
@@ -409,5 +416,28 @@ export const Page3 = () => {
         <Img src={DogoHappy} />
       </ImgWrap>
     </Wrap3>
+  )
+}
+
+export const VerifyComponent = (props) => {
+  const { success, error } = props
+  console.log('success', success)
+  console.log('error', error)
+  return (
+    <Wrap style={{ minHeight: 600 }}>
+      <Spacer>
+        <Center>
+          <Title2 style={{ textAlign: 'center', marginBottom: 0 }}>{success ? 'Din email är verifierad' : error ? 'Kunde inte verifera din mail' : 'Veriferar din email'}</Title2>
+          <Body style={{ textAlign: 'center', marginBottom: 20 }}>{success ? 'Du kan stänga den här sidan och återgå till appen' : error ? 'Försök gärna igen om en liten stund' : 'Stäng inte ner sidan medans vi veriferar dig'}</Body>
+          <div style={{ margin: '0 auto', display: 'flex', height: 300, width: 300, background: 'rgba(174, 187, 248, 0.35)', borderRadius: 99999, alignItems: 'center' }}>
+            <div style={{ maxWidth: error ? 200 : 300, margin: '0 auto' }}>
+              {success && <Img src={Success} />}
+              {error && <Img src={ErrorImg} />}
+              {!error && !success && <Img src={DogoHappy} />}
+            </div>
+          </div>
+        </Center>
+      </Spacer>
+    </Wrap>
   )
 }
