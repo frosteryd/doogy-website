@@ -1,6 +1,6 @@
 import { useState, useCallback, useLayoutEffect } from 'react'
 import styled from 'styled-components'
-import { Stars, DrawArrow, Appstore, device, deviceMin, Phone, TypeWrite, ArrowWrap } from '../components/Assets'
+import { Stars, DrawArrow, Appstore, device, deviceMin, Phone, TypeWrite, ArrowWrap, theme } from '../components/Assets'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw, faComments, faLifeRing, faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 import Sticky from 'react-stickynode'
@@ -14,6 +14,9 @@ import Prepare from '../assets/prepare.png'
 import Base from '../assets/worksText.png'
 import Success from '../assets/successOne.gif'
 import ErrorImg from '../assets/error.gif'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 const Wrap = styled.div`
   max-width: 100%;
@@ -436,6 +439,88 @@ export const VerifyComponent = (props) => {
               {!error && !success && <Img src={DogoHappy} />}
             </div>
           </div>
+        </Center>
+      </Spacer>
+    </Wrap>
+  )
+}
+
+const schema = yup.object({
+  password: yup.string().min(6, 'Lösenordet är för kort - behöver vara minst 6 tecken.').required('Du behöver fylla i ditt nya lösenord'),
+  passwordVerify: yup.string()
+    .oneOf([yup.ref('password'), null], 'Lösenorden är inte lika')
+}).required()
+
+const PwdInput = styled.input`
+  padding: 20px 10px;
+  border-radius: 20px;
+  border: 1px solid ${theme.colors.primary};
+  min-widht: 300px;
+`
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const SubmitButton = styled.button`
+  min-width: 200px;
+  box-shadow: 0px 2px 35px 5px rgba(0, 0, 0, 0.15);
+  background: ${theme.colors.beige};
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  border: 1px solid ${theme.colors.primary};
+  margin: 0 auto;
+`
+
+export const UpdatePasswordComponent = (props) => {
+  const { loading, success, error, onSubmit } = props
+  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
+
+  return (
+    <Wrap style={{ minHeight: 600, maxWidth: 600, margin: '0 auto' }}>
+      <Spacer>
+        <Center>
+          <Title2 style={{ textAlign: 'center', marginBottom: 0 }}>{success ? 'Din lösenord är uppdaterat' : error ? 'Kunde inte uppdatera ditt lösenord' : 'Uppdatera lösenord'}</Title2>
+          <Body style={{ textAlign: 'center', marginBottom: 20 }}>{success ? 'Du kan stänga den här sidan och återgå till appen' : error && 'Försök gärna igen om en liten stund'}</Body>
+          {!loading && !success && !error &&
+            <Center>
+              <Row>
+                <label style={{ paddingLeft: 10, paddingBottom: 5 }}>Nytt lösenord</label>
+                <PwdInput
+                  type='password'
+                  id='password'
+                  name='password'
+                  placeholder='Nytt lösenord'
+                  {...register('password')}
+                />
+              </Row>
+              <p style={{ color: 'darkred' }}>{errors.password?.message}</p>
+              <Row>
+                <label style={{ paddingLeft: 10, paddingBottom: 5 }}>Verifera ditt nya lösenord</label>
+                <PwdInput
+                  type='password'
+                  id='passwordVerify'
+                  name='passwordVerify'
+                  placeholder='Verifera ditt nya lösenord'
+                  {...register('passwordVerify')}
+                />
+              </Row>
+              <p style={{ color: 'darkred' }}>{errors.passwordVerify?.message}</p>
+              <SubmitButton onClick={handleSubmit((values) => onSubmit(values))}><ButtonText>Spara</ButtonText></SubmitButton>
+            </Center>}
+          {(loading || success || error) &&
+            <div style={{ margin: '0 auto', display: 'flex', height: 300, width: 300, background: 'rgba(174, 187, 248, 0.35)', borderRadius: 99999, alignItems: 'center' }}>
+              <div style={{ maxWidth: error ? 200 : 300, margin: '0 auto' }}>
+                {success && <Img src={Success} />}
+                {error && <Img src={ErrorImg} />}
+                {loading && <Img src={DogoHappy} />}
+              </div>
+            </div>}
         </Center>
       </Spacer>
     </Wrap>

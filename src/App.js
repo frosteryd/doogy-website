@@ -3,12 +3,12 @@ import { Box, Grommet, Main } from 'grommet'
 import styled from 'styled-components'
 import Footer from '../src/components/Footer'
 import Header from '../src/components/Header'
-import { Page1, Page2, Page3, VerifyComponent } from '../src/components/Content'
+import { Page1, Page2, Page3, VerifyComponent, UpdatePasswordComponent } from '../src/components/Content'
 import { theme } from './components/Assets'
-
 import { Routes, Route, useParams } from 'react-router-dom'
 
 const MESSAGE = 'We are soon going live 🎉'
+const API_ENV = 'http://localhost:1337'
 
 const TopBarText = styled.span`
   color: ${theme.colors.title};
@@ -18,11 +18,6 @@ const TopBarText = styled.span`
 const GrommetWrap = styled(Grommet)`
   background-image: ${theme.colors.background};
   min-height: 100vh;
-`
-
-const SizeWrap = styled.div`
-  max-width: ${props => props.size};
-  text-align: center;
 `
 
 const Page = styled.div`
@@ -66,7 +61,7 @@ const VerifyPage = (message) => {
         body: JSON.stringify({ token: verifyToken })
       }
       // NOTE: needs to be updated to correct endpoint
-      fetch('http://localhost:1337/user/verify-email/token', requestOptions)
+      fetch(API_ENV + '/user/verify-email/token', requestOptions)
         .then(res => {
           const { status } = res
           if (status === 200) {
@@ -88,6 +83,50 @@ const VerifyPage = (message) => {
     <Main>
       <Header alert={message} />
       <VerifyComponent loading={loading} error={error} success={success} />
+    </Main>
+  )
+}
+
+const UpdatePasswordPage = (message) => {
+  const { token } = useParams()
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState(false)
+
+  const onSubmit = ({ password }) => {
+    setLoading(true)
+    if (token) {
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token, password })
+      }
+      // NOTE: needs to be updated to correct endpoint
+      fetch(API_ENV + '/user/forgot/password/token', requestOptions)
+        .then(res => {
+          const { status } = res
+          if (status === 200) {
+            setSuccess(true)
+            setError(false)
+          } else {
+            setSuccess(false)
+            setError(true)
+          }
+          setLoading(false)
+        }).catch(() => {
+          setLoading(false)
+          setSuccess(false)
+          setError(true)
+        })
+    }
+  }
+  return (
+    <Main>
+      <Header alert={message} />
+      <UpdatePasswordComponent onSubmit={onSubmit} loading={loading} error={error} success={success} />
     </Main>
   )
 }
@@ -117,6 +156,7 @@ function App () {
       <Routes>
         <Route path='/' element={<LandingPage message={MESSAGE} />} />
         <Route path='/app/verify/:verifyToken' element={<VerifyPage />} />
+        <Route path='/app/password/:token' element={<UpdatePasswordPage />} />
       </Routes>
       <Footer />
     </GrommetWrap>

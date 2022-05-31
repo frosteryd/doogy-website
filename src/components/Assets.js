@@ -110,7 +110,6 @@ const ContactWrap = styled.div`
   justify-content: space-around;
   padding: 0.25rem ;
   z-index: 9999;
-
 `
 
 const TextWrap = styled.div`
