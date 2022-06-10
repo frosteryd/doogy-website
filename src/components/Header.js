@@ -50,16 +50,12 @@ const Center = styled.div`
 
 const HeaderComponent = ({ alert }) => {
   const onClick = () => {
-    console.log('scroll')
     window.scrollTo({
       top: document.body.clientHeight,
       left: 0,
       behavior: 'smooth'
     })
   }
-
-  console.log(document.scrollingElement)
-  console.log()
 
   return (
     <Header>
