@@ -424,8 +424,6 @@ export const Page3 = () => {
 
 export const VerifyComponent = (props) => {
   const { success, error } = props
-  console.log('success', success)
-  console.log('error', error)
   return (
     <Wrap style={{ minHeight: 600 }}>
       <Spacer>

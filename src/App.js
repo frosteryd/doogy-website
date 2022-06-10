@@ -48,7 +48,6 @@ const VerifyPage = (message) => {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
 
-  console.log('verifyToken', verifyToken)
   useEffect(() => {
     setLoading(true)
     if (verifyToken) {
