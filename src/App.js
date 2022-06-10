@@ -8,7 +8,7 @@ import { theme } from './components/Assets'
 import { Routes, Route, useParams } from 'react-router-dom'
 
 const MESSAGE = 'We are soon going live 🎉'
-const API_ENV = 'http://localhost:1337'
+const API_ENV = process.env.REACT_APP_API_ENDPOINT
 
 const TopBarText = styled.span`
   color: ${theme.colors.title};
