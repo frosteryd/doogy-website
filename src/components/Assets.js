@@ -2,6 +2,7 @@ import { Spring, animated } from 'react-spring'
 import { ReactSVG } from 'react-svg'
 import Apple from '../assets/appstore.svg'
 import Android from '../assets/playstore.svg'
+import AndroidSoon from '../assets/playstore-soon.svg'
 import Dogo from '../assets/dog.png'
 import Star from '../assets/star.svg'
 import ArrowDraw from '../assets/arrow.svg'
@@ -93,8 +94,10 @@ const AppWrap = styled.div`
 export const Appstore = ({ marginTop = '0px', size }) => {
   return (
     <AppWrap marginTop={marginTop}>
-      <a target='_blank' href='https://www.apple.com/se/app-store/' rel='noreferrer'><Store size={size} src={Apple} /></a>
-      <a target='_blank' href='https://www.apple.com/se/app-store/' rel='noreferrer'><Store size={size} src={Android} /></a>
+      <a target='_blank' href='https://www.apple.com/se/app-store/1629126938' rel='noreferrer'><Store size={size} src={Apple} /></a>
+      {/* <a target='_blank' href='https://www.apple.com/se/app-store/' rel='noreferrer'><Store size={size} src={Android} /></a> */}
+      <a target='_blank' href='https://www.apple.com/se/app-store/' rel='noreferrer'><Store size={size} src={AndroidSoon} /></a>
+
     </AppWrap>
   )
 }
