@@ -96,7 +96,7 @@ export const Appstore = ({ marginTop = '0px', size }) => {
     <AppWrap marginTop={marginTop}>
       <a target='_blank' href='https://www.apple.com/se/app-store/1629126938' rel='noreferrer'><Store size={size} src={Apple} /></a>
       {/* <a target='_blank' href='https://www.apple.com/se/app-store/' rel='noreferrer'><Store size={size} src={Android} /></a> */}
-      <a target='_blank' href='https://www.apple.com/se/app-store/' rel='noreferrer'><Store size={size} src={AndroidSoon} /></a>
+      <a><Store size={size} src={AndroidSoon} /></a>
 
     </AppWrap>
   )
