@@ -7,7 +7,7 @@ import { Page1, Page2, Page3, VerifyComponent, UpdatePasswordComponent } from '.
 import { theme } from './components/Assets'
 import { Routes, Route, useParams } from 'react-router-dom'
 
-const MESSAGE = 'We are soon going live 🎉'
+const MESSAGE = 'We are live on App Store 🎉'
 const API_ENV = process.env.REACT_APP_API_ENDPOINT
 
 const TopBarText = styled.span`
