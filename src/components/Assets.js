@@ -95,9 +95,8 @@ export const Appstore = ({ marginTop = '0px', size }) => {
   return (
     <AppWrap marginTop={marginTop}>
       <a style={{ zIndex: 99999 }} target='_blank' href='https://apps.apple.com/se/app/doogy/id1629126938' rel='noreferrer'><Store size={size} src={Apple} /></a>
-      {/* <a  style={{ zIndex: 99999 }} target='_blank' href='https://www.apple.com/se/app-store/' rel='noreferrer'><Store size={size} src={Android} /></a> */}
-      <a style={{ zIndex: 99999 }}><Store size={size} src={AndroidSoon} /></a>
-
+      <a style={{ zIndex: 99999 }} target='_blank' href='https://play.google.com/store/apps/details?id=com.fsociety.doogy.app' rel='noreferrer'><Store size={size} src={Android} /></a>
+      {/* <a style={{ zIndex: 99999 }}><Store size={size} src={AndroidSoon} /></a> */}
     </AppWrap>
   )
 }
